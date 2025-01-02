@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    is_matching_login_user
     @user = User.find(params[:id])
     if @user == current_user
       render 'edit'
