@@ -1,3 +1,14 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h2>プロフィール編集</h2>
 <%= form_with model: @user do |f| %>
   <label for="inputName">Name</label>
@@ -6,5 +17,5 @@
   <%= f.text_area :introduction, id:"inputIntroduction", placeholder:"自己紹介"%>
   <label for="inputImage">ProfileImage</label>
   <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  
-  <%= f.submit "変更を保存" %>
+  <%= f.submit "Update User" ,class: 'btn btn-success'%>
 <% end %>
